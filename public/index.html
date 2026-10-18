@@ -1,0 +1,59 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10162b"><title>Parchemin scellé</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;}body{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 50% 30%,#28385e,#10182c 55%,#080d17);overflow:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:radial-gradient(#a6b9e8 .7px,transparent .7px);background-size:23px 23px}
+.scene{width:min(650px,94vw);aspect-ratio: .83;max-height:92vh;position:relative;display:grid;place-items:center;filter:drop-shadow(0 24px 30px #0009)}
+.parchment{position:absolute;inset:3% 6%;background:linear-gradient(105deg,#9e8358,#e2d0a7 18%,#d7c293 50%,#e5d5b1 80%,#9d8055);border:7px solid #6e5536;box-shadow:inset 0 0 36px #60482c88,inset 0 0 0 5px #b99a67,inset 0 0 0 7px #6e5536;clip-path:polygon(3% 1%,97% 0,99% 3%,98% 97%,95% 100%,5% 99%,1% 96%,0 4%); }
+.parchment:before{content:"";position:absolute;inset:12px;border:1px solid #6e553688;clip-path:polygon(2% 0,100% 1%,99% 100%,0 99%)}
+.parchment:after{content:"";position:absolute;inset:0;opacity:.2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 8px,#745b3933 9px,transparent 10px)}
+.scroll-roll{position:absolute;left:1%;right:1%;height:7%;border-radius:50%;background:linear-gradient(180deg,#6c4c2d,#d0b47c 25%,#8d6b3c 55%,#4b3524);border:2px solid #5e4428;box-shadow:0 5px 10px #0007;z-index:2}
+.scroll-roll.top{top:1%}.scroll-roll.bottom{bottom:1%}
+.seal-button{position:relative;z-index:3;width:82%;aspect-ratio:1;border:0;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;outline:none;filter:drop-shadow(0 5px 5px #51302a55)}
+.seal-button svg{width:100%;height:100%;overflow:visible}
+.seal-button .ink{stroke:#741e32;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.seal-button .fine{stroke:#741e32;fill:none;stroke-width:1.2;opacity:.85}
+.seal-button:hover{filter:drop-shadow(0 0 12px #6b76ff99)}.seal-button:hover svg{transform:scale(1.015);transition:transform .25s}
+.seal-button:focus-visible{filter:drop-shadow(0 0 12px #70d9ee)}
+.flash{position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(circle,#9d7dff99,transparent 62%);animation:flash 1.2s ease-out forwards}
+#activation{position:fixed;inset:0;z-index:4;display:grid;place-items:center;padding:20px;background:#070b16ee;opacity:0;pointer-events:none;transition:opacity .45s}
+#activation.show{opacity:1;pointer-events:auto;animation:screenHorror 1.6s ease-out both}#activation.show:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 30%,#310b47aa 100%);animation:vignette 1.4s ease-in-out infinite alternate}.effect{width:min(480px,100%);text-align:center;padding:30px 22px;background:linear-gradient(145deg,#100d20,#190d2d 55%,#090d19);border:1px solid #bb79ffbb;box-shadow:0 0 60px #7c62ff55,0 0 120px #9b1cff22;color:#dce4ff;font:16px/1.65 system-ui,sans-serif;animation:panelPulse 2.4s ease-in-out infinite}
+.effect svg{width:110px;height:110px;stroke:#9f8bff;fill:none;stroke-width:1.6;filter:drop-shadow(0 0 9px #9f8bff);animation:rotate 5s linear infinite}.effect:before{content:"";display:block;position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 20%,#8b5cff22,transparent 65%);animation:mist 2.2s ease-in-out infinite alternate}.effect{position:relative;overflow:hidden}.effect>*{position:relative}
+.effect p{margin:12px 0 22px}.effect .warning{font:600 clamp(1.05rem,3.8vw,1.5rem)/1.6 Georgia,serif;letter-spacing:.04em;color:#f0ddff;text-shadow:0 0 8px #b22cff,0 0 22px #6f26ff;animation:warningPulse .85s ease-in-out infinite alternate}.effect button{border:1px solid #6f7ac3;background:#202b4b;color:white;padding:11px 20px;cursor:pointer}
+@keyframes flash{0%{opacity:0}8%{opacity:1}18%{opacity:.08}29%{opacity:.9}43%{opacity:.12}57%{opacity:.75}100%{opacity:0}}@keyframes warningPulse{from{opacity:.68;text-shadow:0 0 5px #b22cff}to{opacity:1;text-shadow:0 0 10px #d0a3ff,0 0 28px #7527ff}}@keyframes panelPulse{0%,100%{box-shadow:0 0 35px #7c62ff44,0 0 90px #9b1cff11}50%{box-shadow:0 0 70px #a12cff77,0 0 130px #9b1cff33}}@keyframes vignette{from{opacity:.4}to{opacity:1}}@keyframes rotate{to{transform:rotate(360deg)}}@keyframes mist{from{opacity:.25;transform:scale(.95)}to{opacity:1;transform:scale(1.08)}}@keyframes screenHorror{0%{filter:contrast(2) hue-rotate(35deg);transform:translateX(-4px)}12%{transform:translateX(4px)}24%{transform:translateX(-2px)}38%{transform:translateX(2px)}100%{filter:contrast(1) hue-rotate(0);transform:translateX(0)}}
+@media(max-width:480px){.scene{width:94vw;aspect-ratio:.78}.seal-button{width:87%}}
+</style></head><body>
+<main class="scene" aria-label="Parchemin ancien"><div class="parchment"></div><div class="scroll-roll top"></div><div class="scroll-roll bottom"></div>
+<button class="seal-button" id="seal" aria-label="Examiner le sceau de Fuinjutsu">
+<svg viewBox="0 0 400 400" aria-hidden="true">
+<g class="fine"><circle cx="200" cy="200" r="185"/><circle cx="200" cy="200" r="173"/><circle cx="200" cy="200" r="152"/><circle cx="200" cy="200" r="126"/><path d="M200 17V383M17 200H383M71 71L329 329M329 71L71 329"/><path d="M200 31l16 42-16 18-16-18zM369 200l-42 16-18-16 18-16zM200 369l-16-42 16-18 16 18zM31 200l42-16 18 16-18 16z"/></g>
+<g class="ink"><circle cx="200" cy="200" r="105"/><path d="M200 94l25 58 63 4-48 42 16 62-56-34-56 34 16-62-48-42 63-4z"/><path d="M200 122l17 48 50 0-40 30 15 48-42-29-42 29 15-48-40-30h50z"/><circle cx="200" cy="200" r="26"/><path d="M200 174v52M174 200h52M182 182l36 36M218 182l-36 36"/><path d="M103 144l-29-10 10 29M297 144l29-10-10 29M103 256l-29 10 10-29M297 256l29 10-10-29"/><path d="M142 73l13 24-24-13M258 73l-13 24 24-13M142 327l13-24-24 13M258 327l-13-24 24 13"/></g>
+<g class="fine"><path d="M200 42l6 14-6 14-6-14zM358 200l-14 6-14-6 14-6zM200 358l-6-14 6-14 6 14zM42 200l14-6 14 6-14 6z"/><path d="M145 145l-8-25 25 8M255 145l8-25-25 8M145 255l-8 25 25-8M255 255l8 25-25-8"/></g>
+</svg></button></main>
+<div id="activation" aria-hidden="true"><section class="effect"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="30" stroke-dasharray="4 5"/><path d="M50 12l9 25 27 1-21 17 7 27-22-15-22 15 7-27-21-17 27-1z"/><circle cx="50" cy="50" r="9"/></svg><p class="warning">Le sceau d'empoisonnement se déclenchera, les minutes sont comptées...</p><button id="close">Refermer</button></section></div>
+<script>
+const activation=document.getElementById('activation');
+function trigger(){activation.classList.add('show');activation.setAttribute('aria-hidden','false');const f=document.createElement('div');f.className='flash';document.body.appendChild(f);setTimeout(()=>f.remove(),900)}
+document.getElementById('seal').addEventListener('click',trigger);
+document.getElementById('close').addEventListener('click',()=>{activation.classList.remove('show');activation.setAttribute('aria-hidden','true')});
+</script>
+<script>
+(async function registerOpening(){
+  try {
+    let visitorId = localStorage.getItem("konoha_scroll_visitor");
+    if (!visitorId) {
+      visitorId = (crypto.randomUUID ? crypto.randomUUID() :
+        Array.from(crypto.getRandomValues(new Uint8Array(16))).map(x=>x.toString(16).padStart(2,"0")).join(""));
+      localStorage.setItem("konoha_scroll_visitor", visitorId);
+    }
+    await fetch("/.netlify/functions/open", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({visitorId})
+    });
+  } catch (e) {
+    // The visual experience still works if tracking is unavailable.
+  }
+})();
+</script>
+
+</body></html>
